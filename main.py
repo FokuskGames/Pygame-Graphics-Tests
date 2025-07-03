@@ -9,17 +9,19 @@ from enum import Enum
 class ScreenMode(Enum):
     WINDOWED = 1
     FULLSCREEN = 2
+    """ cspell:disable-next-line """    
     BORDERLESS = 3
     WINDOWED_RESIZABLE = 4
-    BORDERLESS_TAKINGUP_PRECENTAGE = 5
+    """ cspell:disable-next-line """
+    BORDERLESS_TAKINGUP_PERCENTAGE = 5
 
 pygame.init()
 
-mode = ScreenMode.BORDERLESS  # Modes: WINDOWED, FULLSCREEN, BORDERLESS, WINDOWED_RESIZABLE, BORDERLESS_TAKINGUP_PRECENTAGE
+mode = ScreenMode.BORDERLESS  # Modes: WINDOWED, FULLSCREEN, BORDERLESS, WINDOWED_RESIZABLE, BORDERLESS_TAKINGUP_PERCENTAGE
 
 aspect_ratio = (16, 9)
 scale = 75
-taking_up_percentage = 50  # Only used for BORDERLESS_TAKINGUP_PRECENTAGE mode
+taking_up_percentage = 50  # Only used for BORDERLESS_TAKINGUP_PERCENTAGE mode
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s',handlers=[logging.StreamHandler(sys.stdout)])
 
@@ -34,7 +36,7 @@ elif mode == ScreenMode.WINDOWED:
     screen = pygame.display.set_mode((aspect_ratio[0]*scale, aspect_ratio[1]*scale))
 elif mode == ScreenMode.WINDOWED_RESIZABLE:
     screen = pygame.display.set_mode((aspect_ratio[0]*scale, aspect_ratio[1]*scale), pygame.RESIZABLE)
-elif mode == ScreenMode.BORDERLESS_TAKINGUP_PRECENTAGE:
+elif mode == ScreenMode.BORDERLESS_TAKINGUP_PERCENTAGE:
     screen = pygame.display.set_mode((int(infoObject.current_w * taking_up_percentage / 100), int(infoObject.current_h * taking_up_percentage / 100)), pygame.NOFRAME)
 else:
     logging.fatal("Unsupported screen mode: %s", mode.name)
@@ -51,11 +53,11 @@ FONT = pygame.font.SysFont("Consolas", 18)
 TEST_CHAR = TEST_FONT.render("X", True, (255, 255, 255))
 CHAR = FONT.render("X", True, (255, 255, 255))
 
-TEST_TEXTS = [
-              "Whereas disregard and contempt for human rights have resulted in barbarous acts which have outraged the conscience of mankind, and the advent of a world in which human beings shall enjoy freedom of speech and belief and freedom from fear and want has been proclaimed as the highest aspiration of the common people",
-              "že zneuznání lidských práv a pohrdání jimi vedlo k barbarským činům, urážejícím svědomí lidstva, a že vybudování světa, ve kterém lidé, zbavení strachu a nouze, se budou těšiti svobodě projevu a přesvĕdčení, bylo prohlášeno za nejvyšší cíl lidu",
-              "da die Nichtanerkennung und Verachtung der Menschenrechte zu Akten der Barbarei geführt haben, die das Gewissen der Menschheit mit Empörung erfüllen, und da verkündet worden ist, daß einer Welt, in der die Menschen Rede- und Glaubensfreiheit und Freiheit von Furcht und Not genießen, das höchste Streben des Menschen gilt",
-              "ولما كان تناسي حقوق الإنسان وازدراؤها قد أفضيا إلى أعمال همجية آذت الضمير الإنساني، وكان غاية ما يرنو إليه عامة البشر انبثاق عالم يتمتع فيه الفرد بحرية القول والعقيدة ويتحرر من الفزع والفاقة."
+TEST_TEXTS = [ 
+              """ cspell:disable-line """ "Whereas disregard and contempt for human rights have resulted in barbarous acts which have outraged the conscience of mankind, and the advent of a world in which human beings shall enjoy freedom of speech and belief and freedom from fear and want has been proclaimed as the highest aspiration of the common people",
+              """ cspell:disable-line """ "že zneuznání lidských práv a pohrdání jimi vedlo k barbarským činům, urážejícím svědomí lidstva, a že vybudování světa, ve kterém lidé, zbavení strachu a nouze, se budou těšiti svobodě projevu a přesvĕdčení, bylo prohlášeno za nejvyšší cíl lidu",
+              """ cspell:disable-line """ "da die Nichtanerkennung und Verachtung der Menschenrechte zu Akten der Barbarei geführt haben, die das Gewissen der Menschheit mit Empörung erfüllen, und da verkündet worden ist, daß einer Welt, in der die Menschen Rede- und Glaubensfreiheit und Freiheit von Furcht und Not genießen, das höchste Streben des Menschen gilt",
+              """ cspell:disable-line """ "ولما كان تناسي حقوق الإنسان وازدراؤها قد أفضيا إلى أعمال همجية آذت الضمير الإنساني، وكان غاية ما يرنو إليه عامة البشر انبثاق عالم يتمتع فيه الفرد بحرية القول والعقيدة ويتحرر من الفزع والفاقة."
             ]
 
 test_times = []
