@@ -78,7 +78,7 @@ def test_start(name="Unnamed Test", delay=5):
     id = len(test_times)
     logging.info(f"Delay before starting test {id} ({name})...")
     pygame.display.set_caption(f"Test {id} ({name}) running...")
-    for repeat in range(delay * 30):
+    for _ in range(delay * 30):
         check_events()
         screen.fill((0, 0, 0))
         text = FONT.render(f"Test {id} ({name}) starting soon...", True, (255, 255, 255))
@@ -108,7 +108,7 @@ def test_end(id = ..., delay=5):
     if not test is test_times[-1]:
         test_times[-1] = test
     logging.info(f"Test {test['id']} ({test['name']}) ended. Duration: {duration} seconds.")
-    for repeat in range(delay * 30):
+    for _ in range(delay * 30):
         check_events()
         #screen.fill((0, 0, 0))
         text = FONT.render(f"Test {test["id"]} ({test["name"]}) ended.", True, (255, 255, 255),(0,0,0))
@@ -208,6 +208,17 @@ for _ in range(100):
     y2 = randint(0, screen.get_height() - 1)
     color = (randint(0, 255), randint(0, 255), randint(0, 255))
     pygame.draw.line(screen, color, (x1, y1), (x2, y2))
+    pygame.display.flip()
+test_end(delay=1)
+
+#Test 8: 100 random pixels
+test_id = test_start("Drawing 100 random pixels")
+for _ in range(100):
+    check_events()
+    x = randint(0, screen.get_width() - 1)
+    y = randint(0, screen.get_height() - 1)
+    color = (randint(0, 255), randint(0, 255), randint(0, 255))
+    screen.set_at((x, y), color)
     pygame.display.flip()
 test_end(delay=1)
 
