@@ -130,7 +130,7 @@ for y in range(screen.get_height()):
         check_events()
         screen.set_at((x, y), (255, 255, 255))
     pygame.display.flip()
-test_end(delay=1)
+test_end()
 
 #Test 1: Filling the screen with a rectangle
 
@@ -138,7 +138,7 @@ test_id = test_start("Filling screen with a rectangle")
 rect = pygame.Rect(0, 0, screen.get_width(), screen.get_height())
 pygame.draw.rect(screen, (255, 255, 255), rect)
 pygame.display.flip()
-test_end(delay=1)
+test_end()
 
 #Test 2: Filling the screen with random characters
 
@@ -149,7 +149,7 @@ for y in range(0, int(screen.get_height()), CHAR.get_height()):
         r_char = TEST_FONT.render(f"{chr(randint(21,126))}", True, (255, 255, 255))
         screen.blit(r_char, (x, y))
     pygame.display.flip()
-test_end(delay=1)
+test_end()
 
 #Test 3: Filling the screen with meaningful text
 
@@ -163,14 +163,14 @@ for y, line in zip(range(0, int(screen.get_height()), TEST_CHAR.get_height()), w
     text = TEST_FONT.render(line, True, (255, 255, 255))
     screen.blit(text, (0, y))
     pygame.display.flip()
-test_end(delay=1)
+test_end()
 
 #Test 4: Filling the screen with fill()
 
 test_id = test_start("Filling screen with fill")
 screen.fill((255, 255, 255))
 pygame.display.flip()
-test_end(delay=1)
+test_end()
 
 #Test 5: 100 random rectangles
 
@@ -184,7 +184,7 @@ for _ in range(100):
     color = (randint(0, 255), randint(0, 255), randint(0, 255))
     pygame.draw.rect(screen, color, (x, y, width, height))
     pygame.display.flip()
-test_end(delay=1)
+test_end()
 
 #Test 6: 100 random circles
 test_id = test_start("Drawing 100 random circles")
@@ -196,7 +196,7 @@ for _ in range(100):
     color = (randint(0, 255), randint(0, 255), randint(0, 255))
     pygame.draw.circle(screen, color, (x, y), radius)
     pygame.display.flip()
-test_end(delay=1)
+test_end()
 
 #Test 7: 100 random lines
 test_id = test_start("Drawing 100 random lines")
@@ -209,7 +209,7 @@ for _ in range(100):
     color = (randint(0, 255), randint(0, 255), randint(0, 255))
     pygame.draw.line(screen, color, (x1, y1), (x2, y2))
     pygame.display.flip()
-test_end(delay=1)
+test_end()
 
 #Test 8: 100 random pixels
 test_id = test_start("Drawing 100 random pixels")
@@ -220,7 +220,7 @@ for _ in range(100):
     color = (randint(0, 255), randint(0, 255), randint(0, 255))
     screen.set_at((x, y), color)
     pygame.display.flip()
-test_end(delay=1)
+test_end()
 
 if len(test_times) <= 0:
     logging.fatal("No tests were run. Exiting.")
