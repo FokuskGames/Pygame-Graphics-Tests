@@ -21,7 +21,7 @@ mode = ScreenMode.BORDERLESS  # Modes: WINDOWED, FULLSCREEN, BORDERLESS, WINDOWE
 
 aspect_ratio = (16, 9)
 scale = 75
-taking_up_percentage = 50  # Only used for BORDERLESS_TAKINGUP_PERCENTAGE mode
+taking_up_percentage = 95  # Only used for BORDERLESS_TAKINGUP_PERCENTAGE mode
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s',handlers=[logging.StreamHandler(sys.stdout)])
 
@@ -172,11 +172,50 @@ screen.fill((255, 255, 255))
 pygame.display.flip()
 test_end(delay=1)
 
+#Test 5: 100 random rectangles
+
+test_id = test_start("Drawing 100 random rectangles")
+for _ in range(100):
+    check_events()
+    x = randint(0, screen.get_width() - 1)
+    y = randint(0, screen.get_height() - 1)
+    width = randint(1, screen.get_width() // 10)
+    height = randint(1, screen.get_height() // 10)
+    color = (randint(0, 255), randint(0, 255), randint(0, 255))
+    pygame.draw.rect(screen, color, (x, y, width, height))
+    pygame.display.flip()
+test_end(delay=1)
+
+#Test 6: 100 random circles
+test_id = test_start("Drawing 100 random circles")
+for _ in range(100):
+    check_events()
+    x = randint(0, screen.get_width() - 1)
+    y = randint(0, screen.get_height() - 1)
+    radius = randint(1, min(screen.get_width(), screen.get_height()) // 10)
+    color = (randint(0, 255), randint(0, 255), randint(0, 255))
+    pygame.draw.circle(screen, color, (x, y), radius)
+    pygame.display.flip()
+test_end(delay=1)
+
+#Test 7: 100 random lines
+test_id = test_start("Drawing 100 random lines")
+for _ in range(100):
+    check_events()
+    x1 = randint(0, screen.get_width() - 1)
+    y1 = randint(0, screen.get_height() - 1)
+    x2 = randint(0, screen.get_width() - 1)
+    y2 = randint(0, screen.get_height() - 1)
+    color = (randint(0, 255), randint(0, 255), randint(0, 255))
+    pygame.draw.line(screen, color, (x1, y1), (x2, y2))
+    pygame.display.flip()
+test_end(delay=1)
 
 if len(test_times) <= 0:
     logging.fatal("No tests were run. Exiting.")
     pygame.quit()
     sys.exit(1)
+
 
 logging.info("Showing test results...")
 pygame.display.set_caption("Test results")
@@ -197,6 +236,7 @@ while running:
         screen.blit(test_text, (10, 30 + no * CHAR.get_height()))
     pygame.display.flip()
     clock.tick(30)
+
 
 logging.info("Program finished.")
 pygame.quit()
