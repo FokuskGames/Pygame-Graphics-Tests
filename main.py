@@ -111,7 +111,7 @@ def test_end(id = ..., delay=5):
     for _ in range(delay * 30):
         check_events()
         #screen.fill((0, 0, 0))
-        text = FONT.render(f"Test {test["id"]} ({test["name"]}) ended.", True, (255, 255, 255),(0,0,0))
+        text = FONT.render(f"Test {test['id']} ({test['name']}) ended.", True, (255, 255, 255),(0,0,0))
         screen.blit(text, (10, 10))
         pygame.display.flip()
         clock.tick(30)
